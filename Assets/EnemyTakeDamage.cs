@@ -59,6 +59,7 @@ public class EnemyBrain : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (isStunned) return; // Don't take damage if already stunned
         // 4. Detect Sword Hit
         if (collision.CompareTag("Sword"))
         {

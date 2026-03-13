@@ -21,6 +21,8 @@ public class PlayerMovement : MonoBehaviour
     private bool isStunned = false;
 
     private Vector3 characterScale;
+    [Header("Sword Setup")]
+    public Transform swordPivot;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -34,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
     }
     void Update()
     {
+        HandleSwordRotation();
         // 1. START JUMP
         if (Keyboard.current.wKey.wasPressedThisFrame && IsGrounded())
         {
@@ -65,6 +68,33 @@ public class PlayerMovement : MonoBehaviour
         {
             isJumping = false;
         }
+    }
+    void HandleSwordRotation()
+    {
+        if (swordPivot == null) return;
+
+        // Default: Pointing Right (0 degrees)
+        float angle = 0f;
+
+        // 1. Check if S is held for Downward Slash
+        if (Keyboard.current.sKey.isPressed)
+        {
+            angle = -90f; // Point down
+        }
+        // 2. Otherwise, check if W is held for Upward Slash (Optional)
+        else if (Keyboard.current.wKey.isPressed)
+        {
+            angle = 90f; // Point up
+        }
+        // 3. Default back to side-facing if neither is pressed
+        else
+        {
+            // We use 0 because the Player's localScale handles the Left/Right flip
+            angle = 0f; 
+        }
+
+        // Apply the rotation to the pivot
+        swordPivot.localRotation = Quaternion.Euler(0, 0, angle);
     }
 
     void FixedUpdate()
