@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isJumping;
     private float jumpCounter;
     private bool isStunned = false;
+    public SpriteRenderer characterSprite;
 
     private Vector3 characterScale;
     [Header("Sword Setup")]
@@ -73,27 +74,27 @@ public class PlayerMovement : MonoBehaviour
     {
         if (swordPivot == null) return;
 
-        // Default: Pointing Right (0 degrees)
-        float angle = 0f;
+        float direction = characterSprite.flipX ? -1f : 1f;
+        bool isVertical = Keyboard.current.sKey.isPressed || Keyboard.current.wKey.isPressed;
 
-        // 1. Check if S is held for Downward Slash
-        if (Keyboard.current.sKey.isPressed)
+        // 1. Position the Pivot
+        if (isVertical)
         {
-            angle = -90f; // Point down
+            // Center the pivot for up/down slashes so it doesn't look "off-side"
+            swordPivot.localPosition = new Vector3(0, 0, 0);
         }
-        // 2. Otherwise, check if W is held for Upward Slash (Optional)
-        else if (Keyboard.current.wKey.isPressed)
-        {
-            angle = 90f; // Point up
-        }
-        // 3. Default back to side-facing if neither is pressed
         else
         {
-            // We use 0 because the Player's localScale handles the Left/Right flip
-            angle = 0f; 
+            // Move it to the side for left/right slashes
+            swordPivot.localPosition = new Vector3(0.3f * direction, 0, 0);
         }
 
-        // Apply the rotation to the pivot
+        // 2. Rotate the Pivot
+        float angle = 0f;
+        if (Keyboard.current.sKey.isPressed) angle = -90f;
+        else if (Keyboard.current.wKey.isPressed) angle = 90f;
+        else angle = (direction < 0) ? 180f : 0f;
+
         swordPivot.localRotation = Quaternion.Euler(0, 0, angle);
     }
 
@@ -103,11 +104,14 @@ public class PlayerMovement : MonoBehaviour
         float horizontal = 0;
         if (Keyboard.current.aKey.isPressed) horizontal = -1;
         if (Keyboard.current.dKey.isPressed) horizontal = 1;
+        
         if (horizontal > 0)
         {
-            transform.localScale = characterScale; // Face right    
+            characterSprite.flipX = false; // Face right
+            swordPivot.localPosition = new Vector3(0.5f, 0, 0); // Move pivot to right side
         } else if (horizontal < 0) {
-            transform.localScale = new Vector3(-characterScale.x, characterScale.y, characterScale.z); // Face left
+            characterSprite.flipX = true; // Face left
+            swordPivot.localPosition = new Vector3(-0.5f, 0, 0); // Move pivot to left side
         }
         rb.linearVelocity = new Vector2(horizontal * moveSpeed, rb.linearVelocity.y);
     }

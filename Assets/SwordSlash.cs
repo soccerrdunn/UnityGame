@@ -11,6 +11,7 @@ public class SwordAttack : MonoBehaviour
     private Collider2D swordCollider;
     private float startAngle = 25f;
     private float endAngle = -10f;
+    public SpriteRenderer characterSprite;
 
     void Start()
     {
@@ -43,6 +44,7 @@ public class SwordAttack : MonoBehaviour
         float elapsed = 0;
         while (elapsed < slashDuration)
         {
+            float direction = characterSprite.flipX ? -1f : 1f;
             if (Keyboard.current.sKey.isPressed)
             {
                 startAngle = -70f;
@@ -53,8 +55,17 @@ public class SwordAttack : MonoBehaviour
                 endAngle = 110f;
             } else
             {
-                startAngle = 25f;
-                endAngle = -10f;
+                if (direction > 0) // Facing Right
+                {
+                    startAngle = 25f;
+                    endAngle = -10f;
+                }
+                else // Facing Left
+                {
+                    // We mirror the angles by starting at 155 and ending at 190
+                    startAngle = 155f;
+                    endAngle = 190f;
+                }
             }
             // Rotate the PIVOT (this script's object)
             float angle = Mathf.Lerp(startAngle, endAngle, elapsed / slashDuration);
