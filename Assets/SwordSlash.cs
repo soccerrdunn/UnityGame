@@ -9,6 +9,8 @@ public class SwordAttack : MonoBehaviour
     
     private SpriteRenderer sr;
     private Collider2D swordCollider;
+    private float startAngle = 25f;
+    private float endAngle = -10f;
 
     void Start()
     {
@@ -41,8 +43,21 @@ public class SwordAttack : MonoBehaviour
         float elapsed = 0;
         while (elapsed < slashDuration)
         {
+            if (Keyboard.current.sKey.isPressed)
+            {
+                startAngle = -70f;
+                endAngle = -110f;
+            } else if (Keyboard.current.wKey.isPressed)
+            {
+                startAngle = 70f;
+                endAngle = 110f;
+            } else
+            {
+                startAngle = 25f;
+                endAngle = -10f;
+            }
             // Rotate the PIVOT (this script's object)
-            float angle = Mathf.Lerp(25f, -10f, elapsed / slashDuration);
+            float angle = Mathf.Lerp(startAngle, endAngle, elapsed / slashDuration);
             transform.localRotation = Quaternion.Euler(0, 0, angle);
 
             elapsed += Time.deltaTime;
