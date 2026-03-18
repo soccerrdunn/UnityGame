@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyBrain : MonoBehaviour
@@ -15,6 +16,8 @@ public class EnemyBrain : MonoBehaviour
     private Rigidbody2D rb;
     private Transform playerTransform;
     private bool isStunned = false;
+    [Header("Sword + Ground Detection")]
+    public SwordAttack swordScript; // Reference to the player's sword script to check if it hit the floor
 
     void Start()
     {
@@ -34,7 +37,7 @@ public class EnemyBrain : MonoBehaviour
     void FixedUpdate()
     {
         // 1. If we are stunned by a hit, don't move!
-        if (isStunned || playerTransform == null) return;
+        if (isStunned || playerTransform == null || swordScript.hitFloor) return;
 
         float distance = Vector2.Distance(transform.position, playerTransform.position);
 

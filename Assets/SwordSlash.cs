@@ -12,6 +12,7 @@ public class SwordAttack : MonoBehaviour
     private float startAngle = 25f;
     private float endAngle = -10f;
     public SpriteRenderer characterSprite;
+    public bool hitFloor = false;
 
     void Start()
     {
@@ -28,6 +29,19 @@ public class SwordAttack : MonoBehaviour
         if (Keyboard.current.spaceKey.wasPressedThisFrame)
         {
             StartCoroutine(PerformSlash());
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        hitFloor = false; // Reset this every time we hit something, and only set it to true if it's the floor
+        if (other.CompareTag("Enemy"))
+        {
+            if (other.CompareTag("Ground"))
+            {
+                hitFloor = true;
+                Debug.Log("Sword hit the floor!");
+            }
         }
     }
 
