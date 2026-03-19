@@ -601,7 +601,7 @@ GameObject:
   - component: {fileID: 182904502}
   - component: {fileID: 182904504}
   - component: {fileID: 182904503}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PlatformF
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -755,8 +755,8 @@ Transform:
   m_GameObject: {fileID: 212377834}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12.3486, y: 2.3557, z: 0}
-  m_LocalScale: {x: 2.4827237, y: 11.572322, z: 1}
+  m_LocalPosition: {x: 12.3486, y: -1.1334, z: 0}
+  m_LocalScale: {x: 2.4827237, y: 18.549986, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2070113753}
@@ -1188,7 +1188,7 @@ GameObject:
   - component: {fileID: 952920001}
   - component: {fileID: 952920003}
   - component: {fileID: 952920002}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PlatformE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1433,7 +1433,7 @@ GameObject:
   - component: {fileID: 1022904446}
   - component: {fileID: 1022904448}
   - component: {fileID: 1022904447}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PlatformG-2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1587,8 +1587,8 @@ Transform:
   m_GameObject: {fileID: 1123740611}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.64239, y: -8.93822, z: 0}
-  m_LocalScale: {x: 3.5004, y: 1.1053, z: 1}
+  m_LocalPosition: {x: 7.2438, y: -8.93822, z: 0}
+  m_LocalScale: {x: 2.703359, y: 1.1053, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2070113753}
@@ -1709,7 +1709,7 @@ GameObject:
   - component: {fileID: 1183410949}
   - component: {fileID: 1183410951}
   - component: {fileID: 1183410952}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cieling_Drop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2002,7 +2002,7 @@ GameObject:
   - component: {fileID: 1447159199}
   - component: {fileID: 1447159201}
   - component: {fileID: 1447159200}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PlatformJ
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2448,7 +2448,7 @@ GameObject:
   - component: {fileID: 1699493738}
   - component: {fileID: 1699493740}
   - component: {fileID: 1699493741}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PlatformG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2773,7 +2773,7 @@ GameObject:
   - component: {fileID: 2084724990}
   - component: {fileID: 2084724992}
   - component: {fileID: 2084724991}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PlatformI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2911,7 +2911,7 @@ GameObject:
   - component: {fileID: 2115604530}
   - component: {fileID: 2115604532}
   - component: {fileID: 2115604531}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PlatformH
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3065,8 +3065,8 @@ Transform:
   m_GameObject: {fileID: 2132045415}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 13.622589, y: -8.45082, z: 0}
-  m_LocalScale: {x: 2.8913982, y: 0.71773475, z: 1}
+  m_LocalPosition: {x: 12.0185, y: -13.65, z: 0}
+  m_LocalScale: {x: 3.9147484, y: 0.9002421, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2070113753}

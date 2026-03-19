@@ -34,15 +34,18 @@ public class SwordAttack : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log("I hit: " + other.gameObject.name + " with Tag: " + other.tag);
         hitFloor = false; // Reset this every time we hit something, and only set it to true if it's the floor
-        if (other.CompareTag("Enemy"))
+        if (other.CompareTag("Ground"))
         {
-            if (other.CompareTag("Ground"))
-            {
-                hitFloor = true;
-                Debug.Log("Sword hit the floor!");
-            }
+            hitFloor = true;
+            Debug.Log("Sword hit the floor!");
+        } else if (other.CompareTag("Enemy"))
+        {
+            // We can also add enemy damage logic here if we want
+            Debug.Log("Sword hit an enemy!");
         }
+        
     }
 
     IEnumerator PerformSlash()
